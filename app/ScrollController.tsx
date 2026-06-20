@@ -172,6 +172,7 @@ export default function ScrollController() {
     };
 
     const handleTouchStart = (event: TouchEvent) => {
+      if (!isDesktop()) return;
       if (event.touches.length !== 1) return;
 
       touchStartY.current = event.touches[0].clientY;
@@ -180,6 +181,7 @@ export default function ScrollController() {
     };
 
     const handleTouchMove = (event: TouchEvent) => {
+      if (!isDesktop()) return;
       if (event.touches.length !== 1) return;
 
       if (isAnimating.current) {
@@ -212,6 +214,7 @@ export default function ScrollController() {
     };
 
     const handleTouchEnd = () => {
+      if (!isDesktop()) return;
       if (!touchCaptured.current || isAnimating.current) {
         touchCaptured.current = false;
         return;
